@@ -10,21 +10,6 @@ JobQuest is a 'Job Portal' web application made using Java SpringBoot and ReactJ
 - [Technologies Used](#technologies-used)
 - [Running the Project Locally](#running-the-project-locally)
 
-## Demo
-
-You can check out the live demo of JobQuest [here](https://job-quest-client.vercel.app/).
-
-### Screenshots
-
-![](ReadmeImgs/screen-1.png)
-
----
-
-![](ReadmeImgs/screen-2.png)
-
----
-
-![](ReadmeImgs/screen-3.png)
 
 ## Features
 
