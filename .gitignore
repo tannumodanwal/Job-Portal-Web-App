@@ -1,0 +1,10 @@
+# React
+job-quest-frontend/node_modules/
+
+# Java Spring Boot
+jobquestbackend/target/
+
+# General
+*.log
+*.class
+.DS_Store
