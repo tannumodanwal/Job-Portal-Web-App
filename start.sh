@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd Backend/JobPortalApi/JobPortalApi
+cd Backend/JobPortalApi/JobPortalApi   # correct path
 
-chmod +x ./mvnw   # add this line to fix permission
+chmod +x ./mvnw   # give permission
 
 ./mvnw clean install -DskipTests
 ./mvnw spring-boot:run
