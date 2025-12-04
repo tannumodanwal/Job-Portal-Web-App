@@ -29,6 +29,6 @@ export const uploadRecruiterPhotoApi = async (userId, file) => {
 
 export const getRecruiterPhotoUrl = (fileName) => {
   if (!fileName) return null;
-  return `http://localhost:9000/uploads/profile/${fileName}`;
+  return `http://localhost:8080/uploads/profile/${fileName}`;
 };
 

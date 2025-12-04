@@ -23,7 +23,7 @@ export const uploadCandidatePhotoApi = async (userId, file) => {
 
 export const getCandidatePhotoUrl = (fileName) => {
   if (!fileName) return null;
-  return `http://localhost:9000/uploads/profile/${fileName}`;
+  return `http://localhost:8080/uploads/profile/${fileName}`;
 };
 
 export const getCandidateProfileApi = async (userId) => {
