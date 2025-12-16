@@ -17,33 +17,27 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-	 private final SecretKey key;
+	
+	     
+      private final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-	    @Value("${jwt.expiration}")
-	    private long jwtExpiration;
-		 // 🔥 Constructor-based key creation (IMPORTANT)
-    public JwtService(@Value("${jwt.secret}") String secretKey) {
-        byte[] decodedKey = Base64.getDecoder().decode(secretKey);
-        this.key = Keys.hmacShaKeyFor(decodedKey);
-    }
+    @Value("${jwt.expiration}")
+    private long jwtExpiration;
 
-	    public String generateToken(User user) {
-	        Map<String, Object> claims = new HashMap<>();
-	        claims.put("role", user.getRole());
-	        return createToken(claims, user.getEmail());
-	    }
+    public String generateToken(User user) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", user.getRole());
 
-	     private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(subject)
+                .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(key)
                 .compact();
     }
 
-	   public String extractUsername(String token) {
+    public String extractUsername(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
@@ -59,7 +53,7 @@ public class JwtService {
                     .build()
                     .parseClaimsJws(token);
             return true;
-        } catch (Exception ex) {
+        } catch (Exception e) {
             return false;
         }
     }
